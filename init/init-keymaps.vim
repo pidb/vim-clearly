@@ -30,29 +30,29 @@ inoremap <c-_> <c-k>
 " 使用 SecureCRT/XShell 等终端软件需设置：Backspace sends delete
 " 详见：http://www.skywind.me/blog/archives/2021
 "----------------------------------------------------------------------
-" noremap <C-h> <left>
-" noremap <C-j> <down>
-" noremap <C-k> <up>
-" noremap <C-l> <right>
-" inoremap <C-h> <left>
-" inoremap <C-j> <down>
-" inoremap <C-k> <up>
-" inoremap <C-l> <right>
+noremap <C-h> <left>
+noremap <C-j> <down>
+noremap <C-k> <up>
+noremap <C-l> <right>
+inoremap <C-h> <left>
+inoremap <C-j> <down>
+inoremap <C-k> <up>
+inoremap <C-l> <right>
 
 
 "----------------------------------------------------------------------
 " 命令模式的快速移动
 "----------------------------------------------------------------------
-" cnoremap <c-h> <left>
-" cnoremap <c-j> <down>
-" cnoremap <c-k> <up>
-" cnoremap <c-l> <right>
-" cnoremap <c-a> <home>
-" cnoremap <c-e> <end>
-" cnoremap <c-f> <c-d>
-" cnoremap <c-b> <left>
-" cnoremap <c-d> <del>
-" cnoremap <c-_> <c-k>
+cnoremap <c-h> <left>
+cnoremap <c-j> <down>
+cnoremap <c-k> <up>
+cnoremap <c-l> <right>
+cnoremap <c-a> <home>
+cnoremap <c-e> <end>
+cnoremap <c-f> <c-d>
+cnoremap <c-b> <left>
+cnoremap <c-d> <del>
+cnoremap <c-_> <c-k>
 
 
 "----------------------------------------------------------------------
@@ -168,7 +168,7 @@ noremap <silent><m-right> :call Tab_MoveRight()<cr>
 "----------------------------------------------------------------------
 
 " ALT+h/l 快速左右按单词移动（正常模式+插入模式）
-noremap <c-h> b
+noremap <m-h> b
 noremap <m-l> w
 inoremap <m-h> <c-left>
 inoremap <m-l> <c-right>
@@ -189,21 +189,18 @@ inoremap <m-y> <c-\><c-o>d$
 
 
 "----------------------------------------------------------------------
-" 窗口切换 CTRL+hjkl
+" 窗口切换：ALT+SHIFT+hjkl
+" 传统的 CTRL+hjkl 移动窗口不适用于 vim 8.1 的终端模式，CTRL+hjkl 在
+" bash/zsh 及带文本界面的程序中都是重要键位需要保留，不能 tnoremap 的
 "----------------------------------------------------------------------
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-nnoremap <C-C> <C-W><C-c>
-
-" <C-W>v Splitting window vertically
-" <C-W>s Splitting window horizontally
-
-inoremap <C-H> <esc><c-w>h
-inoremap <C-L> <esc><c-w>l
-inoremap <C-J> <esc><c-w>j
-inoremap <C-K> <esc><c-w>k
+noremap <m-H> <c-w>h
+noremap <m-L> <c-w>l
+noremap <m-J> <c-w>j
+noremap <m-K> <c-w>k
+inoremap <m-H> <esc><c-w>h
+inoremap <m-L> <esc><c-w>l
+inoremap <m-J> <esc><c-w>j
+inoremap <m-K> <esc><c-w>k
 
 if has('terminal') && exists(':terminal') == 2 && has('patch-8.1.1')
 	" vim 8.1 支持 termwinkey ，不需要把 terminal 切换成 normal 模式
@@ -332,5 +329,4 @@ else
 				\ --include='*.js' --include='*.vim'
 				\ '<root>' <cr>
 endif
-
 
