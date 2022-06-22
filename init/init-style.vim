@@ -50,7 +50,7 @@ set background=dark
 set t_Co=256
 
 " 设置颜色主题，会在所有 runtimepaths 的 colors 目录寻找同名配置
-color papercol
+color solarized
 
 
 "----------------------------------------------------------------------
@@ -286,6 +286,59 @@ endfunc
 set tabline=%!Vim_NeatTabLine()
 set guitablabel=%{Vim_NeatGuiTabLabel()}
 set guitabtooltip=%{Vim_NeatGuiTabTip()}
+
+
+"----------------------------------------------------------------------
+" vim-go 语法高亮增强
+"----------------------------------------------------------------------
+let g:tagbar_type_go = {
+        \ 'ctagstype' : 'go',
+        \ 'kinds'     : [
+                \ 'p:package',
+                \ 'i:imports:1',
+                \ 'c:constants',
+                \ 'v:variables',
+                \ 't:types',
+                \ 'n:interfaces',
+                \ 'w:fields',
+                \ 'e:embedded',
+                \ 'm:methods',
+                \ 'r:constructor',
+                \ 'f:functions'
+        \ ],
+        \ 'sro' : '.',
+        \ 'kind2scope' : {
+                \ 't' : 'ctype',
+                \ 'n' : 'ntype'
+        \ },
+        \ 'scope2kind' : {
+                \ 'ctype' : 't',
+                \ 'ntype' : 'n'
+        \ },
+        \ 'ctagsbin'  : 'gotags',
+        \ 'ctagsargs' : '-sort -silent'
+\ }
+
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_string_spellcheck=1
+let g:go_highlight_format_strings=1
+let g:go_highlight_array_whitespace_error=1
+let g:go_highlight_extra_types=1
+let g:go_highlight_operators=1
+let g:go_highlight_space_tab_error=1
+let g:go_highlight_trailing_whitespace_error=1
+let g:go_highlight_function_calls=1
+let g:go_highlight_types=1
+let g:go_highlight_variable_assignments=1
+let g:go_highlight_variable_declarations=1
+let g:go_highlight_debug=1
+let g:go_highlight_function_parameters=1
+let g:go_highlight_fields=1
+
+let g:go_highlight_structs = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_build_constraints = 1
 
 
 
