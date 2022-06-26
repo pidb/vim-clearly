@@ -50,8 +50,7 @@ set background=dark
 set t_Co=256
 
 " 设置颜色主题，会在所有 runtimepaths 的 colors 目录寻找同名配置
-color solarized
-
+color xcodedarkhc
 
 "----------------------------------------------------------------------
 " 状态栏设置
@@ -339,6 +338,5 @@ let g:go_highlight_structs = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_build_constraints = 1
-
 
 

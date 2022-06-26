@@ -680,6 +680,14 @@ if index(g:bundle_group, 'ycm') >= 0
 	
 endif	
 
+Plug 'arzg/vim-colors-xcode'
+colorscheme xcodedark
+colorscheme xcodedarkhc
+colorscheme xcodelight
+colorscheme xcodelighthc
+colorscheme xcodewwdc
+" set termguicolors
+
 "----------------------------------------------------------------------
 " 结束插件安装
 "----------------------------------------------------------------------
