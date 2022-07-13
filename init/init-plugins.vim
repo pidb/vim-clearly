@@ -18,8 +18,13 @@ if !exists('g:bundle_group')
 	let g:bundle_group += ['leaderf']
 	let g:bundle_group += ['vim-go']
 	let g:bundle_group += ['ycm', 'wakatime']
+"	let g:bundle_group += ['coc']
+	let g:bundle_group += ['comment']
 endif
 
+if !exists('g:plugin')
+	let g:plugin = ['rust']
+endif
 
 "----------------------------------------------------------------------
 " 计算当前 vim-init 的子路径
@@ -681,12 +686,11 @@ if index(g:bundle_group, 'ycm') >= 0
 endif	
 
 Plug 'arzg/vim-colors-xcode'
-colorscheme xcodedark
-colorscheme xcodedarkhc
-colorscheme xcodelight
-colorscheme xcodelighthc
-colorscheme xcodewwdc
-" set termguicolors
+"colorscheme xcodedark
+"colorscheme xcodedarkhc
+"colorscheme xcodelight
+"colorscheme xcodelighthc
+"colorscheme xcodewwdc
 
 
 Plug 'Rigellute/rigel'
@@ -712,9 +716,33 @@ autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
 " Toggle auto formatting:
 nmap <Leader>C :ClangFormatAutoToggle<CR>
 
+" Plug 'tribela/vim-transparent'
+
+" colos = {'nature', 'neon'}
+Plug 'wuelnerdotexe/vim-enfocado'
+
+Plug 'arcticicestudio/nord-vim'
+
+" vim-moonfly-colors: https://github.com/bluz71/vim-moonfly-colors
+Plug 'bluz71/vim-moonfly-colors'
+
+"----------------------------------------------------------------------
+" coc 插件 
+" 需要先安装 nodejs, 通过这个脚本: curl -sL install-node.vercel.app/lts | bash
+"----------------------------------------------------------------------
+
+if index(g:bundle_group, 'coc') >= 0
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+endif
+
+
+if index(g:bundle_group, 'comment') >= 0
+	Plug 'language-lab/vim-simple-comment'
+endif 
+
+
 "----------------------------------------------------------------------
 " 结束插件安装
 "----------------------------------------------------------------------
 call plug#end()
-
 

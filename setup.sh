@@ -10,3 +10,6 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 # install pip install pygments
 
 # Show icons (should install fonts from https://github.com/ryanoasis/nerd-fonts)
+
+# include nodejs and yarn
+

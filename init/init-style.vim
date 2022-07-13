@@ -41,7 +41,9 @@ set splitright
 
 "----------------------------------------------------------------------
 " 颜色主题：色彩文件位于 colors 目录中
+" 可选: enfocado, moonfly, elflord
 "----------------------------------------------------------------------
+let g:colors_name = "xcodelighthc"
 
 " 设置黑色背景
 set background=light
@@ -49,8 +51,40 @@ set background=light
 " 允许 256 色
 set t_Co=256
 
+" 开启 termgui 如果允许
+set termguicolors
+
 " 设置颜色主题，会在所有 runtimepaths 的 colors 目录寻找同名配置
-color xcodelighthc
+
+"----------------------------------------------------------------------
+" enfocado：https://github.com/wuelnerdotexe/vim-enfocado
+" 支持 dark, light
+"----------------------------------------------------------------------
+if colors_name == 'enfocado'
+	let g:airline_theme = 'enfocado'
+	let g:enfocado_style = 'nature' " Available: `nature` or `neon`.
+	let g:enfocado_plugins = [
+	  \ 'ale',
+	  \ 'fzf',
+	  \ 'gitgutter',
+	  \ 'matchup',
+	  \ 'nerdtree',
+	  \ 'netrw',
+	  \ 'plug',
+	  \ 'startify',
+	  \ 'yank'
+	  \ ]
+endif
+
+" moonfly 主题特色配置
+if colors_name == 'moonfly'
+	let g:moonflyNormalFloat = 1
+	let g:moonflyTerminalColors = 1
+	let g:moonflyUndercurls = 1
+	let g:moonflyUnderlineMatchParen = 1
+	let g:moonflyWinSeparator = 2
+endif 
+
 
 "----------------------------------------------------------------------
 " 状态栏设置
