@@ -20,6 +20,7 @@ if !exists('g:bundle_group')
 	let g:bundle_group += ['ycm', 'wakatime']
 "	let g:bundle_group += ['coc']
 	let g:bundle_group += ['comment']
+	let g:bundle_group += ['xcode', 'rigel', 'tokyonight', 'enfocado', 'nord', 'vscode']
 endif
 
 if !exists('g:plugin')
@@ -188,7 +189,8 @@ endif
 " 详细用法见：https://zhuanlan.zhihu.com/p/36279445
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'tags') >= 0
-
+	let $GTAGSLABEL = 'native-pygments' "pip install pygments 
+	let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
 	" 提供 ctags/gtags 后台数据库自动更新功能
 	Plug 'ludovicchabant/vim-gutentags'
 
@@ -224,7 +226,7 @@ if index(g:bundle_group, 'tags') >= 0
 	let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
 	" 使用 universal-ctags 的话需要下面这行，请反注释
-	" let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
+	let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
 
 	" 禁止 gutentags 自动链接 gtags 数据库
 	let g:gutentags_auto_add_gtags_cscope = 0
@@ -685,19 +687,39 @@ if index(g:bundle_group, 'ycm') >= 0
 	
 endif	
 
-Plug 'arzg/vim-colors-xcode'
-"colorscheme xcodedark
-"colorscheme xcodedarkhc
-"colorscheme xcodelight
-"colorscheme xcodelighthc
-"colorscheme xcodewwdc
+"----------------------------------------------------------------------
+" 主题插件
+"----------------------------------------------------------------------
+if index(g:bundle_group, 'xcode') >= 0
+	Plug 'arzg/vim-colors-xcode'
+endif
+
+if index(g:bundle_group, 'rigel') >= 0
+	Plug 'Rigellute/rigel'
+endif
+
+if index(g:bundle_group, 'tokyonight') >= 0
+	Plug 'ghifarit53/tokyonight-vim'
+endif
+
+if index(g:bundle_group, 'enfocado') >= 0
+	" colos = {'nature', 'neon'}
+	Plug 'wuelnerdotexe/vim-enfocado'
+endif
+
+if index(g:bundle_group, 'nord') >= 0
+	Plug 'arcticicestudio/nord-vim'
+endif
 
 
-Plug 'Rigellute/rigel'
-set termguicolors
-syntax enable
-let g:rigel_airline = 1
-let g:airline_theme = 'rigel'
+if index(g:bundle_group, 'moonfly') >= 0
+	" vim-moonfly-colors: https://github.com/bluz71/vim-moonfly-colors
+	Plug 'bluz71/vim-moonfly-colors'
+endif
+
+if index(g:bundle_group, 'vscode') >= 0
+	Plug 'tomasiser/vim-code-dark'
+endif
 
 Plug 'preservim/tagbar'
 
@@ -717,14 +739,6 @@ autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
 nmap <Leader>C :ClangFormatAutoToggle<CR>
 
 " Plug 'tribela/vim-transparent'
-
-" colos = {'nature', 'neon'}
-Plug 'wuelnerdotexe/vim-enfocado'
-
-Plug 'arcticicestudio/nord-vim'
-
-" vim-moonfly-colors: https://github.com/bluz71/vim-moonfly-colors
-Plug 'bluz71/vim-moonfly-colors'
 
 "----------------------------------------------------------------------
 " coc 插件 

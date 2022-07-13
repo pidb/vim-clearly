@@ -41,18 +41,21 @@ set splitright
 
 "----------------------------------------------------------------------
 " 颜色主题：色彩文件位于 colors 目录中
-" 可选: enfocado, moonfly, elflord
-"----------------------------------------------------------------------
-let g:colors_name = "xcodelighthc"
+" 可选: enfocado, moonfly, elflord, rigel, tokyonight
+"	1) enfocado: dark + light
+"	2) moonfly:  dark
+"	3) elford: dark
+"	4) [xcodelight,xcodedark,xcodelighthc,xcodedarkhc,xcodewwdc]
+"	5) rigel: dark
+"	6) tokyonight: dark
+"	----------------------------------------------------------------------
+let g:colors_name = "codedark"
 
 " 设置黑色背景
-set background=light
+set background=dark
 
 " 允许 256 色
 set t_Co=256
-
-" 开启 termgui 如果允许
-set termguicolors
 
 " 设置颜色主题，会在所有 runtimepaths 的 colors 目录寻找同名配置
 
@@ -61,6 +64,7 @@ set termguicolors
 " 支持 dark, light
 "----------------------------------------------------------------------
 if colors_name == 'enfocado'
+	set termguicolors
 	let g:airline_theme = 'enfocado'
 	let g:enfocado_style = 'nature' " Available: `nature` or `neon`.
 	let g:enfocado_plugins = [
@@ -78,12 +82,34 @@ endif
 
 " moonfly 主题特色配置
 if colors_name == 'moonfly'
+	set termguicolors
 	let g:moonflyNormalFloat = 1
 	let g:moonflyTerminalColors = 1
 	let g:moonflyUndercurls = 1
 	let g:moonflyUnderlineMatchParen = 1
 	let g:moonflyWinSeparator = 2
 endif 
+
+" rigel 主题配置
+if colors_name == "rigel"
+	set termguicolors
+	syntax enable
+	let g:rigel_airline = 1
+	let g:airline_theme = 'rigel'
+endif
+
+" tokyonight 主题配置
+if colors_name == "tokyonight"
+	let g:tokyonight_style = 'storm' " available: night, storm
+	let g:tokyonight_enable_italic = 1
+endif
+
+" vscode-dark 主题配置
+if colors_name == "vscode"
+	set termguicolors
+	let g:airline_theme = 'codedark'
+endif
+
 
 
 "----------------------------------------------------------------------
