@@ -48,8 +48,11 @@ set splitright
 "	4) [xcodelight,xcodedark,xcodelighthc,xcodedarkhc,xcodewwdc]
 "	5) rigel: dark
 "	6) tokyonight: dark
+"	7) space-vim-dark: dark
 "	----------------------------------------------------------------------
-let g:colors_name = "codedark"
+let g:colors_name = "xcodedarkhc"
+
+set termguicolors
 
 " 设置黑色背景
 set background=dark
@@ -66,7 +69,7 @@ set t_Co=256
 if colors_name == 'enfocado'
 	set termguicolors
 	let g:airline_theme = 'enfocado'
-	let g:enfocado_style = 'nature' " Available: `nature` or `neon`.
+	let g:enfocado_style = 'neon' " Available: `nature` or `neon`.
 	let g:enfocado_plugins = [
 	  \ 'ale',
 	  \ 'fzf',
@@ -110,7 +113,11 @@ if colors_name == "vscode"
 	let g:airline_theme = 'codedark'
 endif
 
-
+if colors_name == "space-vim-dark"
+	color space-vim-dark
+	hi Comment cterm=italic
+	hi LineNr ctermbg=NONE guibg=NONE
+endif
 
 "----------------------------------------------------------------------
 " 状态栏设置

@@ -18,9 +18,9 @@ if !exists('g:bundle_group')
 	let g:bundle_group += ['leaderf']
 	let g:bundle_group += ['vim-go']
 	let g:bundle_group += ['ycm', 'wakatime']
-"	let g:bundle_group += ['coc']
+	let g:bundle_group += ['coc']
 	let g:bundle_group += ['comment']
-	let g:bundle_group += ['xcode', 'rigel', 'tokyonight', 'enfocado', 'nord', 'vscode']
+	let g:bundle_group += ['xcode', 'rigel', 'tokyonight', 'enfocado', 'nord', 'vscode', 'space-vim-dark']
 endif
 
 if !exists('g:plugin')
@@ -721,7 +721,55 @@ if index(g:bundle_group, 'vscode') >= 0
 	Plug 'tomasiser/vim-code-dark'
 endif
 
+if index(g:bundle_group, 'space-vim-dark') >= 0
+	Plug 'liuchengxu/space-vim-dark'
+endif
+
 Plug 'preservim/tagbar'
+
+
+
+" --------------------------------------------------------------------------------
+"  " -- markdown 插件
+"  --------------------------------------------------------------------------------
+
+" vim table 自动对其格式化, 支持多种格式, 这里只为 markdown 使用
+Plug 'dhruvasagar/vim-table-mode'
+let g:table_mode_corner='|' "设置兼容 markdown table 模式
+
+" 自动对列表进行补全, 很适合 markdown
+Plug 'dkarter/bullets.vim'
+let g:bullets_enabled_file_types = [
+    \ 'markdown',
+    \ 'text',
+    \ 'gitcommit',
+    \ 'scratch'
+    \]
+" 继承 glow 在vim 中渲染 markdown, 需要先安装 glow
+" glow 是 go 编写的 terminal  下渲染 markdown 的软件
+Plug 'jclsn/glow.vim'
+
+
+
+
+Plug 'gabrielelana/vim-markdown'
+Plug 'joker1007/vim-markdown-quote-syntax' " 代码块高亮
+
+" markdown 语法高亮规则
+let g:markdown_quote_syntax_filetypes = {
+        \ "cpp" : {
+        \   "start" : "cpp",
+        \},
+        \ "rust" : {
+        \   "start" : "rust",
+        \},
+        \ "go" : {
+        \   "start" : "go",
+        \},
+  \}
+
+let g:markdown_quote_syntax_on_filetypes = ['text']
+
 
 Plug 'rhysd/vim-clang-format'
 let g:clang_format#style_options = {
@@ -747,6 +795,33 @@ nmap <Leader>C :ClangFormatAutoToggle<CR>
 
 if index(g:bundle_group, 'coc') >= 0
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	" GoTo code navigation.
+	nmap <silent> gd <Plug>(coc-definition)
+	nmap <silent> gy <Plug>(coc-type-definition)
+	nmap <silent> gi <Plug>(coc-implementation)
+	nmap <silent> gr <Plug>(coc-references)
+	" Use K to show documentation in preview window.
+	nnoremap <silent> K :call ShowDocumentation()<CR>
+	
+	function! ShowDocumentation()
+	  if CocAction('hasProvider', 'hover')
+	    call CocActionAsync('doHover')
+	  else
+	    call feedkeys('K', 'in')
+	  endif
+	endfunction
+
+
+	" Remap <C-f> and <C-b> for scroll float windows/popups.
+	if has('nvim-0.4.0') || has('patch-8.2.0750')
+	  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+	  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+	  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+	  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+	  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+	  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+	endif
+
 endif
 
 
